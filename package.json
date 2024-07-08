@@ -18,9 +18,7 @@
   "engines": {
     "node": "20.x"
   },
-  "directories": {
-    "test": "tests"
-  },
+
   "devDependencies": {},
   "scripts": {
     "start": "node app.js",
