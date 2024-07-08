@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const pg = require('pg'); 
 require('dotenv').config();
 
 // const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
@@ -9,6 +10,7 @@ require('dotenv').config();
 const sequelize = new Sequelize(process.env.DB_URL, {
   dialect: 'postgres',
   protocol: 'postgres',
+  dialectModule: pg,
   dialectOptions: {
     ssl: {
       require: true,
