@@ -15,11 +15,15 @@
   "name": "stage2",
   "version": "1.0.0",
   "main": "app.js",
+  "engines": {
+    "node": "20.x"
+  },
   "directories": {
     "test": "tests"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node index.js",
     "test": "jest"
   },
   "keywords": [],
