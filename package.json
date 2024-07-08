@@ -21,9 +21,12 @@
   "directories": {
     "test": "tests"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
   "scripts": {
     "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "jest"
   },
   "keywords": [],
