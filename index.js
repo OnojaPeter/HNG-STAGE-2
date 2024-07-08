@@ -1,6 +1,7 @@
 
-require('dotenv').config();
+
 const express = require('express');
+require('dotenv').config();
 const path = require('path');
 const bodyParser = require('body-parser');
 
@@ -20,16 +21,7 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
-app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, 'register.html'));
-});
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'login.html'));
-});
 
-app.use('/api', userRoutes);
-app.use('/api', orgRoutes);
-app.use('/auth', authRoutes);
 
 if (process.env.NODE_ENV === 'production') {
   app.listen(port, () => {
