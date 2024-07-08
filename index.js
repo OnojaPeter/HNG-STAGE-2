@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
@@ -30,6 +31,11 @@ app.use('/api', userRoutes);
 app.use('/api', orgRoutes);
 app.use('/auth', authRoutes);
 
-app.listen(port, () => {
+if (process.env.NODE_ENV === 'production') {
+  app.listen(port, () => {
   console.log(`Server is running on PORT ${port}`);
 });
+}
+// app.listen(port, () => {
+//   console.log(`Server is running on PORT ${port}`);
+// });
