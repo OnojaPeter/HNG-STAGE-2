@@ -16,7 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, 'register.html'));
+  res.status(200).json({"status":'yes'})
+  // res.sendFile(path.join(__dirname, 'register.html'));
 });
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'login.html'));
