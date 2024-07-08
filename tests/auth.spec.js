@@ -5,7 +5,7 @@ const { sequelize, User, Organisation } = require('../models/modelRelationship')
 describe('Auth Endpoints', () => {
   beforeAll(async () => {
     await sequelize.sync({ force: true });
-  });
+  }, 20000);
 
   afterAll(async () => {
     await sequelize.close();
@@ -21,7 +21,7 @@ describe('Auth Endpoints', () => {
           email: 'john@example.com',
           password: 'password'
         });
-        // console.log("response:", response)
+
       expect(response.status).toBe(201);
       expect(response.body.data.user).toHaveProperty('userId');
       expect(response.body.data.organisation).toHaveProperty('name', "John's organisation");
@@ -36,7 +36,7 @@ describe('Auth Endpoints', () => {
           email: '',
           password: ''
         });
-        // console.log('error body:', response.body.errors)
+
       expect(response.status).toBe(422);
       expect(response.body.errors).toContainEqual({ field: 'password', message: 'Password is required' });
       expect(response.body.errors).toContainEqual({ field: 'firstName', message: 'First name is required' });

@@ -6,7 +6,6 @@ const {authenticateToken} = require('../middleware/auth');
 router.get('/organisations', authenticateToken, async (req, res) => {
   try {
     const userId = req.user.userId;
-    // console.log("userId:", userId)
     const organisations = await Organisation.findAll({
       include: {
         model: User,
@@ -14,7 +13,6 @@ router.get('/organisations', authenticateToken, async (req, res) => {
         through: { attributes: [] }
       }
     });
-    // console.log("organisations:", organisations);
 
     res.status(200).json({
       status: 'success',
@@ -24,14 +22,12 @@ router.get('/organisations', authenticateToken, async (req, res) => {
       }
     });
   } catch (error) {
-    console.error('Error fetching organisations:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
 
 router.get('/organisations/:orgId', authenticateToken, async (req, res) => {
   const { orgId } = req.params;
-  // console.log("orgId", orgId)
   try {
     const userId = req.user.userId;
     const organisation = await Organisation.findOne({
@@ -42,7 +38,6 @@ router.get('/organisations/:orgId', authenticateToken, async (req, res) => {
         through: { attributes: [] }
       }
     });
-    // console.log("organisations:", organisation);
     if (!organisation) {
       return res.status(404).json({ message: 'Organisation not found' });
     }
@@ -53,7 +48,6 @@ router.get('/organisations/:orgId', authenticateToken, async (req, res) => {
       data: organisation
     });
   } catch (error) {
-    console.error('Error fetching organisation:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
@@ -77,7 +71,6 @@ router.post('/organisations', authenticateToken, async (req, res) => {
       data: newOrg
     });
   } catch (error) {
-    console.error('Error creating organisation:', error);
     res.status(400).json({ "status": 'Bad request', "message": "Client error", "statusCode": "400" });
   }
 });
@@ -104,7 +97,6 @@ router.post('/organisations/:orgId/users', authenticateToken, async (req, res) =
       message: 'User added to organisation successfully'
     });
   } catch (error) {
-    console.error('Error adding user to organisation:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });

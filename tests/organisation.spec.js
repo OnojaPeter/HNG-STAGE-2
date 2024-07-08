@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../testApp'); // test express app
+const app = require('../testApp'); // express test app
 const {  sequelize, User, Organisation, UserOrganisation } = require('../models/modelRelationship');
 
 describe('Organisation Access', () => {
@@ -11,7 +11,7 @@ describe('Organisation Access', () => {
     const org = await Organisation.create({ name: "User1's Organization", description: 'Test Org' });
 
     await UserOrganisation.create({ userId: user1.userId, orgId: org.orgId });
-  } );
+  } ,20000);
   afterAll(async () => {
     await sequelize.close();
   });

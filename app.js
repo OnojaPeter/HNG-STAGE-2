@@ -1,7 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-// const jwt = require('jsonwebtoken');
-// const bcrypt = require('bcryptjs');
 const path = require('path');
 const bodyParser = require('body-parser');
 
@@ -14,7 +12,6 @@ const port = 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
